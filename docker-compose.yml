@@ -1,0 +1,11 @@
+services:
+  undercover:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "6002:6002"
+    environment:
+      - PORT=6002
+      - NODE_ENV=production
+    restart: always
