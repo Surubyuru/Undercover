@@ -18,7 +18,7 @@ const PORT = process.env.PORT || 6002;
 app.use(express.static(path.join(__dirname, '../frontend/dist')));
 
 // Fallback to index.html for SPA routing
-app.get('/*', (req, res) => {
+app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
 });
 
@@ -208,6 +208,6 @@ io.on('connection', (socket) => {
     });
 });
 
-server.listen(PORT, () => {
+server.listen(PORT, '0.0.0.0', () => {
     console.log(`Server running on port ${PORT}`);
 });
