@@ -1,0 +1,13 @@
+{
+    "name": "undercover-root",
+    "version": "1.0.0",
+    "description": "Root package to manage Undercover front and back",
+    "scripts": {
+        "full": "npm run build --prefix frontend && npm start --prefix backend",
+        "dev": "concurrently \"npm run dev --prefix frontend\" \"npm start --prefix backend\"",
+        "install-all": "npm install --prefix frontend && npm install --prefix backend"
+    },
+    "devDependencies": {
+        "concurrently": "^9.1.2"
+    }
+}

@@ -1,41 +1,92 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-spy-red: #ff3b3b;
+  --color-civilian-green: #00d2ff;
+  --color-neon-green: #39ff14;
+  --color-deep-blue: #0a0e17;
+  --color-glass-bg: rgba(255, 255, 255, 0.03);
+  --color-glass-border: rgba(255, 255, 255, 0.1);
+  --font-inter: "Inter", sans-serif;
+}
 
 :root {
-  background-color: #0f172a;
-  color: #f8fafc;
+  --background: var(--color-deep-blue);
+  --foreground: #ffffff;
 }
 
 body {
+  background: radial-gradient(circle at 50% 50%, #1a1f2e 0%, #0a0e17 100%);
+  color: var(--foreground);
+  font-family: var(--font-inter);
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Glassmorphism utility */
 .glass {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
+  background: var(--color-glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-glass-border);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
-/* Custom scrollbar */
+.neo-shadow-green {
+  box-shadow: 0 0 15px rgba(57, 255, 20, 0.2);
+}
+
+.neo-shadow-red {
+  box-shadow: 0 0 15px rgba(255, 59, 59, 0.2);
+}
+
+.role-reveal-animation {
+  animation: reveal 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes reveal {
+  0% {
+    transform: scale(0.9) rotateY(90deg);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1) rotateY(0deg);
+    opacity: 1;
+  }
+}
+
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
+
 ::-webkit-scrollbar-track {
-  background: #1e293b;
+  background: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: #334155;
-  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: #475569;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Animations */
+.fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
